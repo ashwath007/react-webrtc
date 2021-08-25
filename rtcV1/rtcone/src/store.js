@@ -1,8 +1,13 @@
 import { createStore } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import mainReducer from './reducers/reducer'
 
-import mainReducer from './reducers'
 
+const store = createStore(
+    mainReducer,
+    composeWithDevTools(
 
-export const store = createStore(
-    mainReducer
+    )
 )
+
+export default store;

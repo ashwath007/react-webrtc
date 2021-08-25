@@ -1,0 +1,1 @@
+export const SER_USER_NAME = "SER_USER_NAME"
