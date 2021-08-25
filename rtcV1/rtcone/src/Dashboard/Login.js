@@ -1,12 +1,18 @@
 import React,{useState} from 'react';
 import "./Login.css"
+import {useHistory} from "react-router-dom"
+import {connect} from 'react-redux';
+import {setUserName} from "../actions/dashBoardAction"
 
-const Login = () => {
+const Login = ({setUserName}) => {
     const [name, setname] = useState('');
+
+    let history = useHistory();
 
     const handleSubmitClicked = () => {
         if(name.length > 0 ){
-            
+            history.push('/dash');
+            setUserName(name)
         }
     }
 
@@ -34,4 +40,11 @@ const Login = () => {
     )
 }
 
-export default Login;
+
+
+const mapDispatchToProp =  {
+    setUserName: (username) => setUserName(username) 
+}
+
+
+export default connect(null ,mapDispatchToProp)(Login);
