@@ -13,7 +13,7 @@ const Login = ({setUserName}) => {
 
     const handleSubmitClicked = () => {
         if(name.length > 0 ){
-            history.push('/dashboard');
+            history.push('/dash');
             setUserName(name)
             registerNewUser(name)
         }

@@ -20,7 +20,7 @@ const dashBoardReducer = (state = initialState, action) => {
         case "ACTIVE_USERS":
             return {
                 ...state,
-                activeUsers: action.activeusers
+                activeUsers: action.activeUsers
             }
         default:
             return state
