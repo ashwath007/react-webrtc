@@ -3,6 +3,8 @@ import "./Login.css"
 import {useHistory} from "react-router-dom"
 import {connect} from 'react-redux';
 import {setUserName} from "../actions/dashBoardAction"
+import { registerNewUser } from '../utils/WebSocket/WebSocketConn';
+
 
 const Login = ({setUserName}) => {
     const [name, setname] = useState('');
@@ -11,8 +13,9 @@ const Login = ({setUserName}) => {
 
     const handleSubmitClicked = () => {
         if(name.length > 0 ){
-            history.push('/dash');
+            history.push('/dashboard');
             setUserName(name)
+            registerNewUser(name)
         }
     }
 

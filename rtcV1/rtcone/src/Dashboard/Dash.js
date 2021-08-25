@@ -1,4 +1,5 @@
 import React from 'react';
+import ActiveUser from './Components/ActiveUser/ActiveUser';
 import "./Dashboard.css"
 
 const Dash = () => {
@@ -15,7 +16,7 @@ const Dash = () => {
             <div className="dashboard_right_section bg_sec">
              
                 <div className="dashboard_active_users_list">
-                user
+                <ActiveUser/>
                 </div>
                 <div className="dashboard_logo_container">
                 logo

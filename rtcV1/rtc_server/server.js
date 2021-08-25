@@ -18,7 +18,18 @@ const io = socket(server, {
 });
 
 
+const Peer = [];
+
 io.on('connection', (socket) => {
     socket.emit('connection', null);
     pig.box(`new user connected ${socket.id}`);
+
+    socket.on('register-new-user', (data) => {
+        Peer.push({
+            username: data.username,
+            socketId: data.socketId
+        })
+        pig.box(`register-new-user ${Peer}`);
+    });
+
 })
