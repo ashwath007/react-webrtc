@@ -29,7 +29,8 @@ io.on('connection', (socket) => {
             username: data.username,
             socketId: data.socketId
         })
-        pig.box(`register-new-user ${Peer}`);
+        pig.box(`register-new-user ${Object.values(Peer)}`);
+        console.log(Peer)
     });
 
 })

@@ -6,6 +6,7 @@ const initialState = {
     user: null,
     loading: true,
     error: false,
+    activeUsers: [],
 }
 
 
@@ -15,6 +16,11 @@ const dashBoardReducer = (state = initialState, action) => {
             return {
                 ...state,
                 user: action.username
+            }
+        case "ACTIVE_USERS":
+            return {
+                ...state,
+                activeUsers: action.activeusers
             }
         default:
             return state
