@@ -22,19 +22,21 @@ import {connect} from 'react-redux';
 // ]
 
 
-const ActiveUser = ({activeList}) => {
+const ActiveUser = ({activeUsers}) => {
     return(
-        <div 
-        className="active_user_list_container"
-        >
-            {activeList.map((a_user) => <ActiveUserList  key={a_user.socketId} activeUser={a_user}/>)}
-        </div>
+        <div className='active_user_list_container'>
+        {activeUsers.map((activeUser) =>
+          <ActiveUserList
+            key={activeUser.socketId}
+            activeUser={activeUser}
+          />)}
+      </div>
     )
 }
-
 const mapStateToProps = ({ dashboard }) => ({
     ...dashboard
   });
+  
   
  export default connect(mapStateToProps)(ActiveUser);
 

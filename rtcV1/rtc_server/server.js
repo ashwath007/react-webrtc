@@ -18,7 +18,7 @@ const io = socket(server, {
 });
 
 
-const Peer = [];
+let Peer = [];
 
 const BroadcastEventTypes = {
     ACTIVE_USERS: "ACTIVE_USERS",
@@ -43,5 +43,15 @@ io.on('connection', (socket) => {
             activeUsers: Peer
         })
     });
+
+
+    socket.on('disconnect', () => {
+        pig.box('User disconnected ');
+        Peer = Peer.filter(peer => peer.socketId !== socket.id)
+        io.sockets.emit("broadcast", {
+            event: BroadcastEventTypes.ACTIVE_USERS,
+            activeUsers: Peer
+        })
+    })
 
 })
