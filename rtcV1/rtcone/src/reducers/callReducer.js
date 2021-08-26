@@ -19,3 +19,6 @@ const callReducer = (state = initialState, action) => {
 
     }
 }
+
+
+export default callReducer;
