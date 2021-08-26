@@ -1,17 +1,19 @@
 import { setCallLocalStream } from "../../../actions/callLocalStream"
 import store from "../../../store"
 
-const defaultContrain = {
-    audio: true,
-    video: true
-}
+
+const defaultConstrains = {
+    video: true,
+    audio: true
+};
 
 export const getLocalStream = () => {
-    navigator.mediaDevices.getUserMedia(defaultContrain)
+    navigator.mediaDevices.getUserMedia(defaultConstrains)
         .then(stream => {
-            store.dispatch(setCallLocalStream(stream))
+            store.dispatch(setCallLocalStream(stream));
         })
-        .catch((err) => {
-            console.log("ERROR: Local Stream access denied")
-        })
-}
+        .catch(err => {
+            console.log('error occured when trying to get an access to get local stream');
+            console.log(err);
+        });
+};

@@ -1,23 +1,23 @@
-import { connect } from 'react-redux'
-import React from 'react'
-import LocalVideoView from '../VideoView/LocalVideoView'
+import React from 'react';
+import { connect } from 'react-redux';
+import LocalVideoView from '../VideoView/LocalVideoView';
+import RemoteVideoView from '../RemoteVideoCall/RemoteVideoView';
 
+const DirectCall = (props) => {
+  const { localStream, remoteStream } = props;
 
- function DirectCall(porps) {
-    return (
-        <div>
+  return (
+    <>
+      <LocalVideoView localStream={localStream} />
+      {remoteStream && <RemoteVideoView remoteStream={remoteStream} />}
+    </>
+  );
+};
 
-        </div>
-    )
-
-
-const mapStoreToProps = ({call}) => {
-    return{
-        ...call
-    }   
+function mapStoreStateToProps ({ call }) {
+  return {
+    ...call
+  };
 }
 
-}
-
-
-export default connect(mapStoreToProps)(DirectCall);
+export default connect(mapStoreStateToProps, null)(DirectCall);

@@ -1,49 +1,40 @@
 import React,{useRef,useEffect} from 'react'
 
+
+const styles = {
+    videoContainer: {
+      width: '100%',
+      height: '100%'
+    },
+    videoElement: {
+      width: '100%',
+      height: '100%'
+    }
+  };
+  
+
 export default function RemoteVideoView(props) {
 
 
-    const remoteVideoPlay = useRef();
-    const {remoteStream} = props;
-
-
-    const styles = {
-        videoCont:{
-             width:'100%',
-             height:'100%',
-            
-        },
-
-        videoEle: {
-            width:'100%',
-            height: '100%'
-        }
-    }
+    const { remoteStream } = props;
+    const remoteVideoRef = useRef();
+  
 
     useEffect(() => {
-        if(localStream){
-            const remoteVideo = remoteVideoPlay.current;
-            remoteVideo.srcObject = remoteStream;
-
-            remoteVideo.onloadmetadata = () => {
-                remoteVideo.play();
-            }
-        }
-
-    }, [remoteStream ])
-
-    return (
-        <div
-        style={styles.videoCont}
+        if (remoteStream) {
+          const remoteVideo = remoteVideoRef.current;
+          remoteVideo.srcObject = remoteStream;
     
-        >
-            <video 
-            style={styles.videoEle}
-            ref={remoteVideoPlay} 
-            autoPlay
-            >
+          remoteVideo.onloadedmetadata = () => {
+            remoteVideo.play();
+          };
+        }
+      }, [remoteStream]);
+    
 
-            </video>
-        </div>
-    )
+        return (
+            <div style={styles.videoContainer}>
+              <video style={styles.videoElement} ref={remoteVideoRef} autoPlay />
+            </div>
+          );
 }
