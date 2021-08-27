@@ -37,11 +37,6 @@ io.on('connection', (socket) => {
         pig.box(`register-new-user ${Object.values(Peer)}`);
         console.log(Peer)
 
-
-        io.sockets.emit("broadcast", {
-            event: BroadcastEventTypes.ACTIVE_USERS,
-            activeUsers: Peer
-        })
     });
 
 
